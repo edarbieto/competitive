@@ -3,37 +3,23 @@
 
 using namespace std;
 
-struct point
-{
-    int x, y;
-};
-
 int main()
 {
-    int n;
-    cin >> n;
-    point v[n];
-    for (int i = 0; i < n; i++)
+    int c;
+    cin >> c;
+    int p, n, x, y;
+    p = n = 0;
+    for (int i = 0; i < c; i++)
     {
-        cin >> v[i].x >> v[i].y;
+        cin >> x >> y;
+        if (x >= 0)
+            ++p;
+        else
+            ++n;
     }
-    int m;
-    for (int i = 0; i < n; i++)
-    {
-        m = 0;
-        for (int j = 0; j < n; j++)
-        {
-            if (j != i)
-            {
-                m += v[j].x >= 0 ? 1 : -1;
-            }
-        }
-        if (abs(m) == (n - 1))
-        {
-            cout << "Yes" << endl;
-            return 0;
-        }
-    }
-    cout << "No" << endl;
+    if ((p >= n && n <= 1) || (n >= p && p <= 1))
+        cout << "Yes" << endl;
+    else
+        cout << "No" << endl;
     return 0;
 }
